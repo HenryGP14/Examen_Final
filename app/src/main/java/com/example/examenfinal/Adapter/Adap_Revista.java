@@ -1,24 +1,23 @@
 package com.example.examenfinal.Adapter;
 
+import android.content.Context;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Adap_Revista extends RecyclerView.Adapter<Adap_Revista> {
-    @NonNull
-    @Override
-    public Adap_Revista onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+import com.example.examenfinal.Modelos.Revista;
+
+import java.util.List;
+
+public class Adap_Revista extends {
+    private Context ctx;
+    private List<Revista> lista_revistas;
+
+    public  Adap_Revista(Context mContext, List<Revista> revistas){
+        this.lista_revistas = revistas;
+        ctx = mContext;
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull Adap_Revista holder, int position) {
 
-    }
-
-    @Override
-    public int getItemCount() {
-        return 0;
-    }
 }
