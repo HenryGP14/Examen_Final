@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
 
         Map<String, String> datos_map = new HashMap<String, String>();
 
-        WebService web = new WebService(URL, datos_map, getApplicationContext(), MainActivity.this);
+        WebService web = new WebService(URL, datos_map, MainActivity.this, MainActivity.this);
         web.execute("GET");
     }
 
