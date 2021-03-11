@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import com.example.examenfinal.Adapter.Adap_Revista;
 import com.example.examenfinal.Modelos.Revista;
 import com.example.examenfinal.WebService.Asynchtask;
+import com.example.examenfinal.WebService.WebService;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +31,6 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
 
     String URL = "https://revistas.uteq.edu.ec/ws/journals.php";
     RecyclerView recyclerView;
-    View vista;
 
     public ArrayList<Revista> revistas;
 
@@ -38,25 +38,20 @@ public class MainActivity extends AppCompatActivity implements Asynchtask {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
 
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceBundle) {
-        vista = inflater.inflate(R.layout.item_revista, container, false);
-        recyclerView = vista.findViewById(R.id.revista_recyclerview);
+        recyclerView = findViewById(R.id.revista_recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         Map<String, String> datos_map = new HashMap<String, String>();
 
-        return vista;
+        WebService web = new WebService(URL, datos_map, getApplicationContext(), MainActivity.this);
+        web.execute("GET");
     }
 
     @Override
     public void processFinish(String result) throws JSONException {
-        JSONObject json_lista = new JSONObject(result);
-        JSONArray json_lista_revistas = json_lista.getJSONArray("");
-
+        JSONArray json_lista_revistas = new JSONArray(result);
         revistas = Revista.ObjetoJsonBuild(json_lista_revistas);
 
         Adap_Revista adatador = new Adap_Revista(getApplicationContext(), revistas);
