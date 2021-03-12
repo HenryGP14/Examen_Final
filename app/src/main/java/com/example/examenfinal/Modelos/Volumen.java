@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.examenfinal.DescargaActivity;
 import com.example.examenfinal.R;
 import com.example.examenfinal.VolumenesActivity;
 import com.mindorks.placeholderview.annotations.Click;
@@ -39,7 +40,7 @@ public class Volumen {
     @Click(R.id.btn_D_volumen)
     public void onVolumenViewClick() {
         try {
-            Intent intent = new Intent(ctx.getApplicationContext(), VolumenesActivity.class);
+            Intent intent = new Intent(ctx.getApplicationContext(), DescargaActivity.class);
 
             Bundle cambio_app = new Bundle();
             cambio_app.putString("issue_id", obj_volumen_json.getString("issue_id"));

@@ -45,7 +45,9 @@ public class Descarga {
             JSONArray array_authors = obj_volumen_json.getJSONArray("authors");
             for (int i = 0; i < array_authors.length(); i++){
                 JSONObject object_author = array_authors.getJSONObject(i);
-//                txtAutores.
+                txtAutores.append(object_author.getString("nombres"));
+                if(i < array_authors.length() -1)
+                    txtAutores.append(", ");
             }
         } catch (JSONException ex) {
         }
