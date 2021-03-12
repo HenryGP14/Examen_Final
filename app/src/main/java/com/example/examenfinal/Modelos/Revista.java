@@ -2,9 +2,12 @@ package com.example.examenfinal.Modelos;
 
 import android.content.Context;
 import android.text.Html;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.examenfinal.R;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -29,28 +32,37 @@ public class Revista {
     @View(R.id.txtDescripcion)
     TextView txtDescripcion;
 
+    @View(R.id.img_revista)
+    ImageView img_revista;
+
     @Click(R.id.btnVerRevista)
-    public void onImageViewClick() throws JSONException {
-        System.out.println(obj_revista_json.getString("journal_id"));
+    public void onRevistaViewClick() {
+        try {
+            System.out.println(obj_revista_json.getString("journal_id"));
+        } catch (JSONException ex) {
+        }
     }
 
     Context ctx;
     JSONObject obj_revista_json;
 
     // Constructor que recibira el context de la aplicación y un JSONObjet
-    public Revista(Context context, JSONObject item_obj_revista){
+    public Revista(Context context, JSONObject item_obj_revista) {
         ctx = context;
         obj_revista_json = item_obj_revista;
     }
 
     // Lectura de la API y cambiandolo al layout creado
     @Resolve
-    protected void onResolved(){
-        try{
+    protected void onResolved() {
+        try {
             // Html.fromHtml() "Sirve para convertir HTML en texto normal"
             this.txtTitulo.setText(Html.fromHtml(obj_revista_json.getString("name")));
             this.txtDescripcion.setText(Html.fromHtml(obj_revista_json.getString("description")));
-        }catch (JSONException ex){}
+            Glide.with(ctx).load(obj_revista_json.getString("portada"))
+                    .into(img_revista);
+        } catch (JSONException ex) {
+        }
 
     }
 }
