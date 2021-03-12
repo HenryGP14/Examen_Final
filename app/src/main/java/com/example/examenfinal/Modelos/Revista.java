@@ -1,9 +1,12 @@
 package com.example.examenfinal.Modelos;
 
 import android.content.Context;
+import android.text.Html;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.examenfinal.R;
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -26,6 +29,11 @@ public class Revista {
     @View(R.id.txtDescripcion)
     TextView txtDescripcion;
 
+    @Click(R.id.btnVerRevista)
+    public void onImageViewClick() throws JSONException {
+        System.out.println(obj_revista_json.getString("journal_id"));
+    }
+
     Context ctx;
     JSONObject obj_revista_json;
 
@@ -39,8 +47,9 @@ public class Revista {
     @Resolve
     protected void onResolved(){
         try{
-            this.txtTitulo.setText(obj_revista_json.getString("name"));
-            this.txtDescripcion.setText(obj_revista_json.getString("description"));
+            // Html.fromHtml() "Sirve para convertir HTML en texto normal"
+            this.txtTitulo.setText(Html.fromHtml(obj_revista_json.getString("name")));
+            this.txtDescripcion.setText(Html.fromHtml(obj_revista_json.getString("description")));
         }catch (JSONException ex){}
 
     }
