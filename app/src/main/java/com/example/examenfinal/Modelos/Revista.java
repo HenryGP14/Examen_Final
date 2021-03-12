@@ -1,6 +1,7 @@
 package com.example.examenfinal.Modelos;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ public class Revista {
     public void onRevistaViewClick() {
         try {
             System.out.println(obj_revista_json.getString("journal_id"));
+            Bundle cambio_app = new Bundle();
         } catch (JSONException ex) {
         }
     }
