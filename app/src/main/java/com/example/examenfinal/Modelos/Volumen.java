@@ -7,12 +7,17 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.examenfinal.R;
+import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+@NonReusable
+@Layout(R.layout.item_volumenes)
 public class Volumen {
 
     // Acciones para cambiar los valores por la API
@@ -25,7 +30,7 @@ public class Volumen {
     @View(R.id.txt_V_doi)
     TextView txtDOI;
 
-    @View(R.id.img_revista)
+    @View(R.id.img_volumen)
     ImageView img_revista;
 
     Context ctx;
