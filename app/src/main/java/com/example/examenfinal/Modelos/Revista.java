@@ -1,6 +1,8 @@
 package com.example.examenfinal.Modelos;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.widget.ImageView;
@@ -9,7 +11,9 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.examenfinal.MainActivity;
 import com.example.examenfinal.R;
+import com.example.examenfinal.VolumenesActivity;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
@@ -39,8 +43,13 @@ public class Revista {
     @Click(R.id.btnVerRevista)
     public void onRevistaViewClick() {
         try {
-            System.out.println(obj_revista_json.getString("journal_id"));
+            Intent intent = new Intent(ctx.getApplicationContext(), VolumenesActivity.class);
+
             Bundle cambio_app = new Bundle();
+            cambio_app.putString("journal_id", obj_revista_json.getString("journal_id"));
+            intent.putExtras(cambio_app);
+            ctx.startActivity(intent);
+
         } catch (JSONException ex) {
         }
     }
@@ -65,7 +74,6 @@ public class Revista {
                     .into(img_revista);
         } catch (JSONException ex) {
         }
-
     }
 }
 

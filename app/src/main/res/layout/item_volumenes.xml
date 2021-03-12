@@ -26,16 +26,6 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-    <TextView
-        android:id="@+id/txt_R_volumen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="15dp"
-        android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/txt_R_tvolumen" />
-
     <Button
         android:id="@+id/btn_R_volumen"
         android:layout_width="wrap_content"
@@ -47,4 +37,46 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_volumen_doi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="13dp"
+        android:text="Valor Doi"
+        app:layout_constraintStart_toEndOf="@+id/txt_V_doi"
+        app:layout_constraintTop_toBottomOf="@+id/txt_R_tvolumen" />
+
+    <TextView
+        android:id="@+id/txt_fech_volumen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="Fecha"
+        app:layout_constraintStart_toEndOf="@+id/txt_V_fech"
+        app:layout_constraintTop_toBottomOf="@+id/txt_volumen_doi" />
+
+    <TextView
+        android:id="@+id/txt_V_doi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:text="Doi:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/txt_R_tvolumen" />
+
+    <TextView
+        android:id="@+id/txt_V_fech"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="13dp"
+        android:text="F_Publicación"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/txt_volumen_doi" />
 </androidx.constraintlayout.widget.ConstraintLayout>
