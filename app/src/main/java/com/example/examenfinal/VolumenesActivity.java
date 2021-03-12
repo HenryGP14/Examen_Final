@@ -32,7 +32,7 @@ public class VolumenesActivity extends AppCompatActivity implements Asynchtask {
         WebService web = new WebService(URL + recibir_datos.getString("journal_id"), datos_map, VolumenesActivity.this, VolumenesActivity.this);
         web.execute("GET");
 
-        // Instanciar el placeHolder con el componente del layout activity_main.xml
+        // Instanciar el placeHolder con el componente del layout activity_volumen.xml
         placeHolderView = findViewById(R.id.place_r_volumenes);
 
     }
@@ -43,7 +43,7 @@ public class VolumenesActivity extends AppCompatActivity implements Asynchtask {
         JSONArray json_array = new JSONArray(result);
         for (int i = 0; i < json_array.length(); i++){
             JSONObject json_obj_volumen = json_array.getJSONObject(i);
-            // Añado el context de la aplicacion y el objeto json para enviarselo al modelo Revista
+            // Añado el context de la aplicacion y el objeto json para enviarselo al modelo Volumen
             placeHolderView.addView(new Volumen(getApplicationContext(), json_obj_volumen));
         }
     }

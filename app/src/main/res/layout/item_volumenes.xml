@@ -27,14 +27,15 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <Button
-        android:id="@+id/btn_R_volumen"
+        android:id="@+id/btn_D_volumen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
-        android:text="Info"
+        android:text="Descargar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
         app:layout_constraintStart_toEndOf="@+id/img_volumen"
         app:layout_constraintTop_toBottomOf="@+id/txt_fech_volumen" />
 

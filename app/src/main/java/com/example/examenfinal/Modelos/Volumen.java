@@ -1,12 +1,16 @@
 package com.example.examenfinal.Modelos;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.examenfinal.R;
+import com.example.examenfinal.VolumenesActivity;
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -14,7 +18,6 @@ import com.mindorks.placeholderview.annotations.View;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 @NonReusable
 @Layout(R.layout.item_volumenes)
@@ -32,6 +35,20 @@ public class Volumen {
 
     @View(R.id.img_volumen)
     ImageView img_revista;
+
+    @Click(R.id.btn_D_volumen)
+    public void onVolumenViewClick() {
+        try {
+            Intent intent = new Intent(ctx.getApplicationContext(), VolumenesActivity.class);
+
+            Bundle cambio_app = new Bundle();
+            cambio_app.putString("issue_id", obj_volumen_json.getString("issue_id"));
+            intent.putExtras(cambio_app);
+            ctx.startActivity(intent);
+
+        } catch (JSONException ex) {
+        }
+    }
 
     Context ctx;
     JSONObject obj_volumen_json;
