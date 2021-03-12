@@ -1,61 +1,46 @@
 package com.example.examenfinal.Modelos;
 
+import android.content.Context;
+import android.widget.TextView;
+
+import com.example.examenfinal.R;
+import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.NonReusable;
+import com.mindorks.placeholderview.annotations.Resolve;
+import com.mindorks.placeholderview.annotations.View;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+@NonReusable
+@Layout(R.layout.item_revista)
+
 public class Revista {
-    String journal_id;
-    String  name;
-    String portada;
-    String description;
 
-    public Revista(JSONObject obj_revista) throws JSONException {
-        journal_id = obj_revista.getString("journal_id");
-        name = obj_revista.getString("name");
-        portada = obj_revista.getString("portada");
-        description = obj_revista.getString("description");
+    @View(R.id.txtTitulo)
+    TextView txtTitulo;
+
+    @View(R.id.txtDescripcion)
+    TextView txtDescripcion;
+
+    Context ctx;
+    JSONObject obj_revista_json;
+
+    public Revista(Context context, JSONObject item_obj_revista){
+        ctx = context;
+        obj_revista_json = item_obj_revista;
     }
 
-    public  static ArrayList<Revista> ObjetoJsonBuild(JSONArray array_datos) throws JSONException{
-        ArrayList<Revista> revistas = new ArrayList<>();
-        for(int i = 0; i < array_datos.length(); i++){
-            revistas.add(new Revista(array_datos.getJSONObject(i)));
-        }
-        return revistas;
-    }
+    @Resolve
+    protected void onResolved(){
+        try{
+            this.txtTitulo.setText(obj_revista_json.getString("name"));
+            this.txtDescripcion.setText(obj_revista_json.getString("description"));
+        }catch (JSONException ex){}
 
-    public String getJournal_id() {
-        return journal_id;
-    }
-
-    public void setJournal_id(String journal_id) {
-        this.journal_id = journal_id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPortada() {
-        return portada;
-    }
-
-    public void setPortada(String portada) {
-        this.portada = portada;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 }
+

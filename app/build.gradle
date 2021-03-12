@@ -30,9 +30,9 @@ android {
 
 dependencies {
     // Implemetanciones de examen
-    compile 'com.mindorks.android:placeholderview:1.0.3'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.mindorks.android:placeholderview:1.0.3'
     annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.3'
     // Fin de implementaciones
     implementation 'androidx.appcompat:appcompat:1.2.0'
